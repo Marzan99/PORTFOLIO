@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO meta -->
+    <title>MD. Marzanul Islam | Oracle Database & APEX Developer</title>
+    <meta name="description"
+        content="Portfolio of MD. Marzanul Islam — Oracle Database & APEX Developer specialising in PL/SQL, relational schema design, and secure enterprise web applications.">
+    <meta name="author" content="MD. Marzanul Islam">
+    <meta name="keywords"
+        content="Oracle Developer, PL/SQL, Oracle APEX, Database Developer, SQL, Portfolio, Bangladesh">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MD. Marzanul Islam | Oracle Database & APEX Developer">
+    <meta property="og:description"
+        content="Oracle Database & APEX Developer building secure, enterprise-grade database applications.">
+    <meta property="og:image" content="MARZAN.png">
+
+    <!-- Fonts + icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Site styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Skip link for keyboard / screen-reader users -->
+    <a href="#home" class="skip-link">Skip to content</a>
+
+    <!-- Interactive particle background (decorative) -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="glass-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+            <a href="#home" class="logo" aria-label="Home">M<span>.</span>I</a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">Profile</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#terminal">SQL Terminal</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light / dark theme">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <header id="home" class="hero">
+            <div class="hero-content glass-panel reveal">
+                <div class="profile-pic-container">
+                    <img src="MARZAN.png" alt="Portrait of MD. Marzanul Islam" class="profile-pic" width="150"
+                        height="150"
+                        onerror="this.onerror=null;this.src='https://image.idb-bisew.info/Images/00001/00069/0068330.png'">
+                </div>
+                <p class="greeting">Welcome to my universe, I am</p>
+                <h1 class="name-title">MD. Marzanul Islam</h1>
+                <h2 class="typing-text">I build <span id="typed" aria-live="polite"></span></h2>
+                <p class="bio">
+                    A passionate <strong>Oracle Database &amp; APEX Developer</strong> specialised in engineering
+                    relational database schemas, compiling complex PL/SQL scripts, and building secure,
+                    enterprise-grade web applications.
+                </p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn btn-primary">View Projects</a>
+                    <a href="#terminal" class="btn btn-secondary">Try SQL Terminal</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============ PROFILE / ABOUT ============ -->
+        <section id="about" class="section">
+            <h2 class="section-title reveal">Professional Profile</h2>
+            <div class="about-grid">
+                <div class="about-image glass-panel reveal">
+                    <div class="about-pic-container">
+                        <img src="MARZAN.png" alt="MD. Marzanul Islam" class="profile-photo"
+                            onerror="this.onerror=null;this.src='https://image.idb-bisew.info/Images/00001/00069/0068330.png'">
+                    </div>
+                </div>
+                <div class="about-text glass-panel reveal">
+                    <p>I am a dedicated and detail-oriented <strong>Oracle Database and Application Developer</strong>.
+                        Having completed an intensive 788-hour professional scholarship under the
+                        <strong>IsDB-BISEW IT Scholarship Programme</strong>, I hold comprehensive technical expertise
+                        in building secure relational databases, crafting compound triggers and packages, and deploying
+                        modular ERP workflows in <strong>Oracle APEX</strong>.</p>
+                    <p>Equipped with a dual background in Technology and English Literature (BA Hons from BUBT), I pair
+                        rigorous database architecture practices with strong communication and customer-relations
+                        skills. I love turning manual, complex corporate operations into high-performance, responsive
+                        ecosystems.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3 class="counter" data-target="4">0</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="counter" data-target="5">0</h3>
+                            <p>Roles Managed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="counter" data-target="45">0</h3>
+                            <p>Database Reports</p>
+                        </div>
+                    </div>
+                    <div class="about-cta">
+                        <a href="CV_1page-format.html" target="_blank" rel="noopener" class="btn btn-primary">
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i> Open Printable CV (A4)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section id="skills" class="section">
+            <h2 class="section-title reveal">Technical Expertise</h2>
+            <div class="skills-grid">
+                <article class="skill-card glass-panel reveal">
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <h3>Database Development</h3>
+                    <p class="skill-desc">Oracle SQL, PL/SQL, Triggers, Compound Views, Stored Procedures, DBA basics.</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Database Development proficiency"
+                        aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress" data-width="95%"></div>
+                    </div>
+                </article>
+                <article class="skill-card glass-panel reveal">
+                    <i class="fas fa-cubes" aria-hidden="true"></i>
+                    <h3>Oracle APEX &amp; Middleware</h3>
+                    <p class="skill-desc">Oracle Application Express (APEX), Oracle Forms &amp; Reports Developer 11g.</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Oracle APEX proficiency"
+                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress" data-width="90%"></div>
+                    </div>
+                </article>
+                <article class="skill-card glass-panel reveal">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                    <h3>Web Development</h3>
+                    <p class="skill-desc">HTML5, CSS3, JavaScript (ES6+), Responsive Design, UI/UX principles.</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Web Development proficiency"
+                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress" data-width="85%"></div>
+                    </div>
+                </article>
+                <article class="skill-card glass-panel reveal">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
+                    <h3>Multimedia Design</h3>
+                    <p class="skill-desc">Adobe Photoshop, Illustrator, Premiere Pro (video editing &amp; production).</p>
+                    <div class="progress-bar" role="progressbar" aria-label="Multimedia Design proficiency"
+                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress" data-width="80%"></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ EXPERIENCE & EDUCATION ============ -->
+        <section id="experience" class="section">
+            <h2 class="section-title reveal">My Professional Timeline</h2>
+            <div class="timeline-grid">
+
+                <!-- Work Experience -->
+                <div class="timeline-col reveal">
+                    <h3 class="timeline-col-title"><i class="fas fa-briefcase" aria-hidden="true"></i> Work Experience</h3>
+                    <div class="timeline">
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">Jan 2025 – Jul 2025</div>
+                            <h4>Data Entry Operator</h4>
+                            <p class="timeline-org">Bangladesh Election Commission</p>
+                            <p>Managed biographical &amp; biometric data-processing projects with strict accuracy compliance.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">Jun 2024 – Oct 2024</div>
+                            <h4>Manual Coder (4-Month Project)</h4>
+                            <p class="timeline-org">Bangladesh Bureau of Statistics (BBS)</p>
+                            <p>Encoded, systematised, and audited massive census and demographic datasets.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">Feb 2024 – Oct 2024</div>
+                            <h4>Customer Representative</h4>
+                            <p class="timeline-org">Sygnius IT Solutions</p>
+                            <p>Administered CRM records, maintained client relationships, and optimised support metrics.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">May 2022 – Dec 2022</div>
+                            <h4>Agency Manager</h4>
+                            <p class="timeline-org">Travel Mate, Mirpur 6</p>
+                            <p>Coordinated logistics operations, managed ticketing records, and directed team projects.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">Mar 2021 – Apr 2022</div>
+                            <h4>Assistant English &amp; ICT Teacher</h4>
+                            <p class="timeline-org">Kafrul Model High School</p>
+                            <p>Delivered lesson plans, managed student databases, and administered the computer lab.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="timeline-col reveal">
+                    <h3 class="timeline-col-title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Education &amp; Program</h3>
+                    <div class="timeline">
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">IsDB-BISEW IT Programme</div>
+                            <h4>Oracle Database Application Development</h4>
+                            <p class="timeline-org">Diploma (788 Hours)</p>
+                            <p>Full-stack database engineering: SQL, PL/SQL, Forms/Reports, APEX, and DBA basics.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">BCC — Computer Council</div>
+                            <h4>Graphic Design &amp; Multimedia Course</h4>
+                            <p class="timeline-org">Professional Course Certification</p>
+                            <p>Training in vector asset design, image composition, and video-editing pipelines.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">2020 – Jan 2025</div>
+                            <h4>BA (Hons) in English Literature</h4>
+                            <p class="timeline-org">Bangladesh University of Business &amp; Technology (BUBT)</p>
+                            <p>Business communication, analytical writing, and textual analysis. CGPA: 2.94 / 4.00.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">2016 – 2018</div>
+                            <h4>Higher Secondary Certificate (Science)</h4>
+                            <p class="timeline-org">BCIC College, Mirpur, Dhaka</p>
+                            <p>Solid analytical foundation in sciences and mathematics. GPA: 3.92 / 5.00.</p>
+                        </article>
+                        <article class="timeline-item glass-panel">
+                            <div class="timeline-date">2008 – 2016</div>
+                            <h4>Secondary School Certificate (Science)</h4>
+                            <p class="timeline-org">Sher-E-Bangla Nagar Govt. Boys' High School</p>
+                            <p>Acquired early computing skills and scientific logic. GPA: 4.94 / 5.00.</p>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section id="portfolio" class="section">
+            <h2 class="section-title reveal">Technical Projects</h2>
+            <div class="portfolio-grid">
+
+                <article class="portfolio-card glass-panel reveal">
+                    <div class="card-content">
+                        <span class="project-tag">Enterprise ERP</span>
+                        <h3>Electronics After-Sales &amp; Services</h3>
+                        <p>A comprehensive business-management application built with Oracle APEX to streamline
+                            post-purchase customer management, inventory control, automated warranties, and support
+                            tracking. Features multi-role login profiles and dynamic analytics dashboards.</p>
+                        <ul class="tags">
+                            <li>Oracle APEX</li>
+                            <li>PL/SQL</li>
+                            <li>Database Schema</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="https://oracleapex.com/ords/r/marzan_ddd_r67/marzan-msp/home" target="_blank"
+                                rel="noopener" class="btn btn-secondary card-btn">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live App
+                            </a>
+                            <span class="demo-cred">Demo: MARZAN / 123</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="portfolio-card glass-panel reveal">
+                    <div class="card-content">
+                        <span class="project-tag">Ecosystem &amp; DB</span>
+                        <h3>Database Ecosystem &amp; Warranty Tracker</h3>
+                        <p>Architected a database ecosystem integrating inventory flows with compound triggers and
+                            stored procedures. Computes complex warranty terms, tracks transaction logs automatically,
+                            and incorporates 45+ parameterised reports.</p>
+                        <ul class="tags">
+                            <li>Oracle SQL</li>
+                            <li>PL/SQL Triggers</li>
+                            <li>Reports</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="https://www.youtube.com/watch?v=6AMi39QiVxQ" target="_blank" rel="noopener"
+                                class="btn btn-secondary card-btn">
+                                <i class="fab fa-youtube" aria-hidden="true"></i> Video Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="portfolio-card glass-panel reveal">
+                    <div class="card-content">
+                        <span class="project-tag">Training &amp; Assets</span>
+                        <h3>Oracle Forms &amp; Reports Guide</h3>
+                        <p>Published detailed instructional materials guiding new developers on building efficient forms
+                            and compiled records using Oracle Forms/Reports Builder 11g.</p>
+                        <ul class="tags">
+                            <li>Oracle Forms</li>
+                            <li>Reports Builder</li>
+                            <li>PL/SQL</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="https://www.youtube.com/watch?v=6AMi39QiVxQ" target="_blank" rel="noopener"
+                                class="btn btn-secondary card-btn">
+                                <i class="fas fa-video" aria-hidden="true"></i> Video Resource
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ============ INTERACTIVE SQL TERMINAL ============ -->
+        <section id="terminal" class="section">
+            <h2 class="section-title reveal">Oracle SQL Interactive Terminal</h2>
+            <p class="section-subtitle reveal">
+                Prove my database engineering skills right here! Click a Quick Query on the left or type your own SQL
+                statement below to query my resume database live.
+            </p>
+
+            <div class="terminal-container glass-panel reveal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons" aria-hidden="true">
+                        <span class="t-btn red"></span>
+                        <span class="t-btn yellow"></span>
+                        <span class="t-btn green"></span>
+                    </div>
+                    <div class="terminal-title">
+                        <i class="fas fa-terminal" aria-hidden="true"></i> SQL Worksheet — marzanul60@orcl_db
+                    </div>
+                </div>
+
+                <div class="terminal-workspace">
+                    <!-- Quick Queries -->
+                    <div class="terminal-sidebar">
+                        <h4>Quick Queries</h4>
+                        <ul class="quick-query-list">
+                            <li data-query="SELECT * FROM bio;">SELECT * FROM bio;</li>
+                            <li data-query="SELECT * FROM skills;">SELECT * FROM skills;</li>
+                            <li data-query="SELECT * FROM experience;">SELECT * FROM experience;</li>
+                            <li data-query="SELECT * FROM projects;">SELECT * FROM projects;</li>
+                            <li data-query="SELECT * FROM education;">SELECT * FROM education;</li>
+                            <li data-query="HELP;">HELP;</li>
+                            <li data-query="CLEAR;">CLEAR;</li>
+                        </ul>
+                    </div>
+
+                    <!-- CLI -->
+                    <div class="terminal-cli">
+                        <div class="terminal-output" id="terminal-output" aria-live="polite">
+                            <div class="line system-msg">Oracle Database 19c Enterprise Edition Release 19.3.0.0.0 - 64bit Production</div>
+                            <div class="line system-msg">Connected to schema: MARZANUL_PORTFOLIO</div>
+                            <div class="line system-msg">Type 'HELP;' or click a Quick Query on the left panel to begin.</div>
+                            <br>
+                        </div>
+                        <div class="terminal-input-line">
+                            <label for="terminal-input" class="terminal-prompt">SQL&gt;</label>
+                            <input type="text" id="terminal-input" placeholder="Type SQL query and press Enter..."
+                                autocomplete="off" spellcheck="false" aria-label="SQL query input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="section">
+            <h2 class="section-title reveal">Let's Connect</h2>
+            <div class="contact-grid">
+
+                <div class="contact-info-panel glass-panel reveal">
+                    <h3>Contact Information</h3>
+                    <p>I am actively seeking database, SQL / PL/SQL developer, and Oracle APEX engineer positions.
+                        Let's build something exceptional!</p>
+                    <div class="contact-details-list">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Agargaon, Sher-E-Bangla Nagar, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p><a href="tel:+8801869220070">01869220070</a> (Mobile)</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:marzanul60@gmail.com">marzanul60@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/md-marzanul-islam-oracle" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <!-- TODO: replace # with your GitHub profile URL -->
+                        <a href="#" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"
+                                aria-hidden="true"></i></a>
+                        <a href="mailto:marzanul60@gmail.com" aria-label="Send email"><i class="fas fa-envelope"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel glass-panel reveal">
+                    <h3>Send Me a Message</h3>
+
+                    <!--
+                        ┌─────────────────────────────────────────────────────────────────┐
+                        │  SETUP (Formspree — free, no backend):                            │
+                        │  1. Create a form at https://formspree.io using marzanul999@gmail.com │
+                        │  2. Copy your form ID (looks like: myzabcde)                       │
+                        │  3. Replace YOUR_FORM_ID in the action URL below with it.          │
+                        └─────────────────────────────────────────────────────────────────┘
+                    -->
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                        <!-- Sets the subject line of the email you receive -->
+                        <input type="hidden" name="_subject" value="New message from your portfolio site">
+
+                        <!-- Honeypot: hidden from humans, trips up spam bots -->
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="honeypot"
+                            aria-hidden="true">
+
+                        <div class="form-group">
+                            <label for="form-name">Name</label>
+                            <input type="text" id="form-name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email</label>
+                            <input type="email" id="form-email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" name="message" rows="4" placeholder="Your message here..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary form-submit-btn">
+                            <span class="btn-label">Send Message</span>
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- Inline status message (errors / info) -->
+                        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <!-- Success overlay slides up when the message is delivered -->
+                    <div id="form-success-msg" class="form-success-msg">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <div>
+                            <h4>Message Sent Successfully!</h4>
+                            <p>Thank you for reaching out. I'll get back to you shortly.</p>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="form-reset-btn">Send another</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> MD. Marzanul Islam. Engineered with passion. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll-to-top button -->
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

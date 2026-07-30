@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Marzanul Islam | Modern CV (1-Page)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #0f172a;
+            --text-dark: #334155;
+            --text-light: #64748b;
+            --bg-color: #f1f5f9;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+            /* Important: removes browser default margins for printing */
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-size: 11px;
+            /* Optimal size to fit 1 page */
+            display: flex;
+            justify-content: center;
+        }
+
+        /* The container simulates an A4 paper */
+        .resume-wrapper {
+            width: 210mm;
+            height: 297mm;
+            background: var(--white);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 30%;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 25px 20px;
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+
+        .contact-info i {
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            width: 15px;
+            text-align: center;
+        }
+
+        .personal-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 8px;
+        }
+
+        .detail-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        .detail-value {
+            font-size: 0.8rem;
+            color: var(--white);
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 25px 30px;
+            flex-grow: 1;
+            width: 70%;
+        }
+
+        .header {
+            margin-bottom: 15px;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .profession {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        .section-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header i {
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+
+        .section-header::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 12px;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .item-date {
+            font-size: 0.75rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .item-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .item-desc {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        /* Projects Section */
+        .project-item {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+            border-left: 2px solid var(--primary);
+        }
+
+        .project-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 2px;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            text-align: justify;
+            margin-bottom: 2px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link i {
+            margin-right: 4px;
+        }
+
+        .modules-list {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+
+        .reference-grid {
+            display: flex;
+            gap: 15px;
+        }
+
+        .ref-card {
+            background: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 2px solid var(--primary);
+            width: 100%;
+        }
+
+        .ref-name {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .ref-role {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .ref-contact {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .ref-contact i {
+            margin-right: 4px;
+            color: var(--primary);
+        }
+
+        /* Browser view styling to simulate paper */
+        @media screen {
+            body {
+                background: #525659;
+                padding: 40px 0;
+            }
+
+            .resume-wrapper {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="resume-wrapper">
+
+        <!-- Sidebar / Left Column -->
+        <aside class="sidebar">
+            <img src="https://image.idb-bisew.info/Images/00001/00069/0068330.png" alt="MD Marzanul Islam"
+                class="profile-pic">
+
+            <h3 class="sidebar-title">Contact Info</h3>
+            <ul class="contact-info">
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Mobile:</strong> 01869220070<br>
+                        <strong>Home:</strong> 01581507352
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <div>marzanul60@gmail.com</div>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        House -4B<br>
+                        Agargaon,New colony<br>
+                        Dhaka, Bangladesh
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="sidebar-title">Personal Details</h3>
+            <div class="personal-details">
+                <div class="detail-item">
+                    <span class="detail-label">Father's Name</span>
+                    <span class="detail-value">MD Nazrul Islam</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Mother's Name</span>
+                    <span class="detail-value">Selina Sultana</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Date of Birth</span>
+                    <span class="detail-value">31/12/2000</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Nationality</span>
+                    <span class="detail-value">Bangladeshi</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Marital Status</span>
+                    <span class="detail-value">Single</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Permanent Address</span>
+                    <span class="detail-value">Thana: Vandharia, Vill: Pasharibunya, Pirojpur</span>
+                </div>
+            </div>
+
+            <h3 class="sidebar-title">References</h3>
+            <ul class="contact-info" style="margin-bottom: 0;">
+                <li style="display: block; line-height: 1.5;">
+                    <strong style="color: var(--white); font-size: 0.9rem;">S.M. Saifuddin Shiblu</strong><br>
+                    <span style="font-size: 0.75rem; color: var(--primary);">Consultant</span><br>
+                    <span style="font-size: 0.75rem;">Show & Tell Consulting Ltd<br>
+                    (IsDB-BISEW IT Scholarship Programme)</span><br>
+                    <div style="margin-top: 5px; display: flex; align-items: center;"><i class="fas fa-phone-alt" style="margin-top:0;"></i> 01816246051</div>
+                    <div style="display: flex; align-items: center;"><i class="fas fa-envelope" style="margin-top:0;"></i> shibluctgbd96@gmail.com</div>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content / Right Column -->
+        <main class="main-content">
+
+            <header class="header">
+                <h1 class="name">MD Marzanul Islam</h1>
+                <div class="profession">Oracle APEX & Web Developer</div>
+            </header>
+
+            <!-- Professional Qualifications -->
+            <section class="section">
+                <h2 class="section-header"><i class="fas fa-certificate"></i> Professional Qualifications</h2>
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Oracle Database Application Development</div>
+                        <div class="item-date">788 Hours</div>
+                    </div>
+                    <div class="item-subtitle">IsDB-BISEW IT Scholarship Programme</div>
+                    <div class="modules-list">
+                        <strong>Modules Covered:</strong> Introduction to Computing, Programming Practices & Techniques
+                        with DB Fundamentals, Oracle Database 19c (SQL & PL/SQL), Oracle Fusion Middleware 11g (Oracle
+                        Forms), Oracle Report Developer, HTML5 with JavaScript & CSS3, Oracle Application Express
+                        (APEX), Oracle DBA Fundamental.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h2 class="section-header"><i class="fas fa-briefcase"></i> Experience</h2>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Data Entry Operator</div>
+                        <div class="item-date">06/01/2025 - 24/07/2025</div>
+                    </div>
+                    <div class="item-subtitle">Bangladesh Election Commission</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Manual Coder (4-Months Project)</div>
+                        <div class="item-date">02/06/2024 - 30/10/2024</div>
+                    </div>
+                    <div class="item-subtitle">Bangladesh Bureau of Statistics (BBS), Dhaka</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Customer Representative</div>
+                        <div class="item-date">05/02/2024 - 01/10/2024</div>
+                    </div>
+                    <div class="item-subtitle">Sygnius It Solutions</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Assistant English and ICT Teacher</div>
+                        <div class="item-date">01/03/2021 - 04/04/2022</div>
+                    </div>
+                    <div class="item-subtitle">Kafrul Model High School, Dhaka</div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <h2 class="section-header"><i class="fas fa-laptop-code"></i> Projects</h2>
+
+                <div class="project-item">
+                    <div class="project-title">Electronics After Sales And Services</div>
+                    <div class="project-desc">
+                        A robust, enterprise-grade management application built using Oracle APEX. Designed to modernize
+                        business workflows, it provides a unified platform for managing operations across sales,
+                        purchasing, inventory, and service sectors. Features modular architecture, HR management,
+                        role-based access, and powerful analytical tools. <em>Credentials: MARZAN / 123</em>
+                    </div>
+                    <a href="https://oracleapex.com/ords/r/marzan_ddd_r67/marzan-msp/home?session=104519149344105"
+                        class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Application Link
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">Electronics After Sales and Service System</div>
+                    <div class="project-desc">
+                        An operational ecosystem designed for modern electronics businesses to manage data, inventory,
+                        customers, financial records, and after-sales service. Features automated inventory, zero-touch
+                        ID generation, comprehensive reporting (45+ reports), and intelligent warranty tracking via
+                        Oracle Database compound triggers.
+                    </div>
+                    <a href="https://youtu.be/6AMi39QiVxQ?si=NS3eanyszGU_TPCf" class="project-link">
+                        <i class="fab fa-youtube"></i> YouTube Video Demonstration
+                    </a>
+                </div>
+            </section>
+
+            <!-- Academic Qualifications -->
+            <section class="section">
+                <h2 class="section-header"><i class="fas fa-graduation-cap"></i> Academic Qualifications</h2>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">BA (Hons) in English</div>
+                        <div class="item-date">2020 - 2024</div>
+                    </div>
+                    <div class="item-subtitle">Bangladesh University of Business & Technology (BUBT)</div>
+                    <div class="item-desc"><strong>Result:</strong> CGPA 2.94 out of 4.00</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Higher Secondary Certificate (HSC) - Science</div>
+                        <div class="item-date">2016 - 2018</div>
+                    </div>
+                    <div class="item-subtitle">BCIC College</div>
+                    <div class="item-desc"><strong>Result:</strong> GPA 3.92 out of 5.00</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Secondary School Certificate (SSC) - Science</div>
+                        <div class="item-date">Passing Year: 2016</div>
+                    </div>
+                    <div class="item-subtitle">Sher-E Bangla Nagar Govt. Boy's High School</div>
+                    <div class="item-desc"><strong>Result:</strong> GPA 4.94 out of 5.00</div>
+                </div>
+            </section>
+
+
+
+        </main>
+    </div>
+
+</body>
+
+</html>

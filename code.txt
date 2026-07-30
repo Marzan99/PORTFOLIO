@@ -1,0 +1,464 @@
+// Typing effect
+const typedTextSpan = document.querySelector("#typed");
+const words = ["Database Applications", "Oracle APEX Apps", "SQL & PL/SQL Scripts", "Relational Schemas"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+    if (!typedTextSpan) return;
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 400; // Pause before next word
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (typedTextSpan) setTimeout(type, 800);
+});
+
+// Scroll Reveal
+function reveal() {
+    const reveals = document.querySelectorAll(".reveal");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("section, header");
+    
+    // 1. Reveal animations
+    for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 80;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+
+            // Trigger progress bars
+            const progressBars = reveals[i].querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
+            });
+
+            // Trigger counters
+            const counters = reveals[i].querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const speed = 100;
+                    const inc = target / speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+                counter.classList.remove('counter'); // Prevent running again
+            });
+        }
+    }
+
+    // 2. Active nav link highlighters
+    let scrollPos = window.scrollY || document.documentElement.scrollTop;
+    sections.forEach(section => {
+        const id = section.getAttribute("id");
+        if (!id) return;
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        
+        if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+    });
+}
+
+window.addEventListener("scroll", reveal);
+document.addEventListener("DOMContentLoaded", reveal);
+
+// Mobile Nav Toggle
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const navLinksContainer = document.getElementById("nav-links");
+
+if (mobileMenuBtn && navLinksContainer) {
+    mobileMenuBtn.addEventListener("click", () => {
+        navLinksContainer.classList.toggle("active");
+        const icon = mobileMenuBtn.querySelector("i");
+        if (icon) {
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-times");
+        }
+    });
+
+    // Close menu when clicking a link
+    navLinksContainer.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinksContainer.classList.remove("active");
+            const icon = mobileMenuBtn.querySelector("i");
+            if (icon) {
+                icon.classList.add("fa-bars");
+                icon.classList.remove("fa-times");
+            }
+        });
+    });
+}
+
+// Light / Dark Theme Switching Logic
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+// Check existing preference
+const savedTheme = localStorage.getItem("theme") || "dark";
+if (savedTheme === "light") {
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
+    if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+} else {
+    body.classList.add("dark-theme");
+    body.classList.remove("light-theme");
+    if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        if (body.classList.contains("dark-theme")) {
+            body.classList.remove("dark-theme");
+            body.classList.add("light-theme");
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem("theme", "light");
+            if (window.updateParticleColors) window.updateParticleColors("light");
+        } else {
+            body.classList.remove("light-theme");
+            body.classList.add("dark-theme");
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem("theme", "dark");
+            if (window.updateParticleColors) window.updateParticleColors("dark");
+        }
+    });
+}
+
+// Interactive Particles System (Theme Aware)
+const canvas = document.getElementById("particles-canvas");
+if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    let particles = [];
+    
+    // Theme-specific colors
+    const darkColors = ['#0ea5e9', '#a855f7', '#ec4899', '#f97316', '#ef4444'];
+    const lightColors = ['#0284c7', '#7c3aed', '#db2777', '#ea580c', '#dc2626'];
+    let activeColors = savedTheme === "light" ? lightColors : darkColors;
+    
+    let mouse = { x: -1000, y: -1000, radius: 130 };
+
+    window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener("mouseout", () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+
+    window.updateParticleColors = (theme) => {
+        activeColors = theme === "light" ? lightColors : darkColors;
+        particles.forEach(p => {
+            p.color = activeColors[Math.floor(Math.random() * activeColors.length)];
+        });
+    };
+
+    function initParticles() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        particles = [];
+        
+        const numberOfParticles = Math.floor((width * height) / 11000);
+        
+        for (let i = 0; i < numberOfParticles; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const color = activeColors[Math.floor(Math.random() * activeColors.length)];
+            const size = Math.random() * 2 + 1.2;
+            particles.push(new Particle(x, y, size, color));
+        }
+    }
+
+    class Particle {
+        constructor(x, y, size, color) {
+            this.x = x;
+            this.y = y;
+            this.baseX = x;
+            this.baseY = y;
+            this.size = size;
+            this.color = color;
+            this.density = (Math.random() * 25) + 1;
+            this.angle = Math.random() * 360;
+            this.speed = (Math.random() * 0.02) - 0.01;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
+            ctx.fillStyle = this.color;
+            if (ctx.roundRect) {
+                ctx.roundRect(-this.size, -this.size / 2, this.size * 3, this.size, this.size);
+            } else {
+                ctx.rect(-this.size, -this.size / 2, this.size * 3, this.size);
+            }
+            ctx.fill();
+            ctx.restore();
+        }
+
+        update() {
+            this.angle += this.speed;
+
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+
+            if (force < 0) force = 0;
+
+            let directionX = (forceDirectionX * force * this.density);
+            let directionY = (forceDirectionY * force * this.density);
+
+            if (distance < mouse.radius) {
+                this.x -= directionX;
+                this.y -= directionY;
+            } else {
+                if (this.x !== this.baseX) {
+                    let dx = this.x - this.baseX;
+                    this.x -= dx / 15;
+                }
+                if (this.y !== this.baseY) {
+                    let dy = this.y - this.baseY;
+                    this.y -= dy / 15;
+                }
+            }
+        }
+    }
+
+    function animateParticles() {
+        requestAnimationFrame(animateParticles);
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
+    }
+
+    initParticles();
+    animateParticles();
+
+    window.addEventListener("resize", () => {
+        initParticles();
+    });
+}
+
+// Oracle SQL Interactive Terminal Logic
+const terminalInput = document.getElementById("terminal-input");
+const terminalOutput = document.getElementById("terminal-output");
+const quickQueries = document.querySelectorAll(".quick-query-list li");
+
+// Data Repository
+const dbData = {
+    bio: [
+        { column: "ATTRIBUTE", type: "VARCHAR2(50)", value: "DETAILS" },
+        { column: "FULL_NAME", type: "VARCHAR2(50)", value: "MD. Marzanul Islam" },
+        { column: "PROFESSION", type: "VARCHAR2(50)", value: "Oracle Database & APEX Developer" },
+        { column: "EMAIL", type: "VARCHAR2(50)", value: "marzanul60@gmail.com" },
+        { column: "MOBILE", type: "VARCHAR2(20)", value: "01869220070" },
+        { column: "LOCATION", type: "VARCHAR2(50)", value: "Agargaon, Dhaka, Bangladesh" }
+    ],
+    skills: [
+        { category: "DATABASES", skills: "Oracle Database 19c, SQL, PL/SQL, DBA Basics" },
+        { category: "ORACLE APEX", skills: "Forms Builder 11g, Reports Builder, Dynamic Action" },
+        { category: "WEB DEVELOPMENT", skills: "HTML5, CSS3, JavaScript (ES6+), Responsive UI" },
+        { category: "MULTIMEDIA DESIGN", skills: "Adobe Photoshop, Illustrator, Premiere Pro" }
+    ],
+    experience: [
+        { role: "DATA ENTRY OPERATOR", company: "Bangladesh Election Commission", tenure: "2025" },
+        { role: "MANUAL CODER", company: "Bangladesh Bureau of Statistics (BBS)", tenure: "2024" },
+        { role: "CUSTOMER REPRESENTATIVE", company: "Sygnius IT Solutions", tenure: "2024" },
+        { role: "AGENCY MANAGER", company: "Travel Mate, Mirpur", tenure: "2022" },
+        { role: "ASSISTANT ICT TEACHER", company: "Kafrul Model High School", tenure: "2021-2022" }
+    ],
+    projects: [
+        { name: "Electronics Sales & Services", type: "Oracle APEX ERP Application", demo: "MARZAN / 123" },
+        { name: "Database Ecosystem", type: "Inventory & Warranty compound trigger system", demo: "PL/SQL Backend" },
+        { name: "Forms & Reports Tutorial", type: "YouTube video demonstration", demo: "Live Guide" }
+    ],
+    education: [
+        { degree: "BA (HONS) ENGLISH", institute: "BUBT", passing_year: "Passing 2025", result: "CGPA 2.94 / 4.00" },
+        { degree: "HSC SCIENCE", institute: "BCIC College", passing_year: "2018", result: "GPA 3.92 / 5.00" },
+        { degree: "SSC SCIENCE", institute: "Sher-E-Bangla Boys School", passing_year: "2016", result: "GPA 4.94 / 5.00" }
+    ]
+};
+
+function renderTerminalTable(columns, rows) {
+    let tableHTML = '<table class="terminal-table"><thead><tr>';
+    columns.forEach(col => {
+        tableHTML += `<th>${col.toUpperCase()}</th>`;
+    });
+    tableHTML += '</tr></thead><tbody>';
+    
+    rows.forEach(row => {
+        tableHTML += '<tr>';
+        columns.forEach(col => {
+            tableHTML += `<td>${row[col] || ''}</td>`;
+        });
+        tableHTML += '</tr>';
+    });
+    
+    tableHTML += '</tbody></table>';
+    return tableHTML;
+}
+
+function processSQLQuery(query) {
+    const cleanQuery = query.trim().replace(/;+$/, '').toLowerCase();
+    
+    if (cleanQuery === '') return '';
+    
+    if (cleanQuery === 'help') {
+        return `<div class="line result">Available database tables:
+- BIO        : Primary information and profile details.
+- SKILLS     : Core technical and design proficiencies.
+- EXPERIENCE : Professional employment and tenure history.
+- PROJECTS   : Featured enterprise and web deployments.
+- EDUCATION  : Academic backgrounds and certifications.
+
+Other commands:
+- HELP  : Show this worksheet instruction list.
+- CLEAR : Erase the command screen display history.
+
+Standard SELECT syntax:
+SELECT * FROM table_name;</div>`;
+    }
+    
+    if (cleanQuery === 'clear') {
+        if (terminalOutput) terminalOutput.innerHTML = '';
+        return 'CLEARED';
+    }
+    
+    // SELECT statement parser
+    const selectMatch = cleanQuery.match(/^select\s+(\*|\w+(?:,\s*\w+)*)\s+from\s+(\w+)(?:\s+where\s+.*)?$/);
+    
+    if (selectMatch) {
+        const table = selectMatch[2];
+        
+        if (dbData[table]) {
+            const data = dbData[table];
+            const cols = Object.keys(data[0]);
+            
+            const tableOutput = renderTerminalTable(cols, data);
+            const rowCount = data.length;
+            return `<div class="line result">${tableOutput}</div>
+<div class="line system-msg">${rowCount} rows selected.</div>`;
+        } else {
+            return `<div class="line error-msg">ORA-00942: table or view '${table.toUpperCase()}' does not exist</div>`;
+        }
+    }
+    
+    // Common syntax mistakes
+    if (cleanQuery.startsWith("select")) {
+        return `<div class="line error-msg">ORA-00923: FROM keyword not found where expected</div>`;
+    }
+    
+    return `<div class="line error-msg">ORA-00900: invalid SQL statement</div>`;
+}
+
+function handleTerminalInput(e) {
+    if (e.key === 'Enter') {
+        const query = terminalInput.value;
+        if (query.trim() === '') return;
+        
+        // Print echo line
+        const echoLine = document.createElement("div");
+        echoLine.className = "line input-echo";
+        echoLine.innerHTML = `<span>SQL></span> ${query}`;
+        terminalOutput.appendChild(echoLine);
+        
+        // Clear input
+        terminalInput.value = '';
+        
+        // Process
+        const result = processSQLQuery(query);
+        
+        if (result !== 'CLEARED') {
+            if (result !== '') {
+                const resultDiv = document.createElement("div");
+                resultDiv.innerHTML = result;
+                terminalOutput.appendChild(resultDiv);
+            }
+        }
+        
+        // Scroll bottom
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+}
+
+if (terminalInput) {
+    terminalInput.addEventListener("keydown", handleTerminalInput);
+}
+
+if (quickQueries) {
+    quickQueries.forEach(item => {
+        item.addEventListener("click", () => {
+            const query = item.getAttribute("data-query");
+            if (query === 'CLEAR;') {
+                processSQLQuery('clear');
+            } else {
+                if (terminalInput) {
+                    terminalInput.value = query;
+                    // Trigger enter keydown programmatically
+                    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+                    terminalInput.dispatchEvent(event);
+                }
+            }
+        });
+    });
+}
+
+// Contact Form Handler
+function handleContactSubmit(event) {
+    event.preventDefault();
+    const successMsg = document.getElementById("form-success-msg");
+    const contactForm = document.getElementById("contact-form");
+    
+    if (successMsg && contactForm) {
+        successMsg.classList.add("active");
+        setTimeout(() => {
+            contactForm.reset();
+        }, 500);
+    }
+}

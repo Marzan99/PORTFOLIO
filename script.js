@@ -452,8 +452,7 @@ if (contactForm) {
     setStatus('');
 
     // Silently drop bot submissions caught by the honeypot
-    const honeypot = contactForm.elements.namedItem('_gotcha');
-    if (honeypot && honeypot.value) return;
+  
 
     if (!validateForm()) {
       setStatus('Please fill in every field with a valid email.', 'error');

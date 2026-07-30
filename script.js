@@ -413,6 +413,10 @@ const formResetBtn = document.getElementById('form-reset-btn');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Your Formspree endpoint — the single source of truth for where the
+// message is delivered. This works even if the HTML form action differs.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdnworn';
+
 function setStatus(message, type = 'info') {
   if (!formStatus) return;
   formStatus.textContent = message;
@@ -456,22 +460,13 @@ if (contactForm) {
       return;
     }
 
-    // Guard against the un-configured placeholder endpoint
-    const endpoint = contactForm.getAttribute('action');
-    if (!endpoint || endpoint.includes('YOUR_FORM_ID')) {
-      setStatus(
-        'Contact form not configured yet — add your Formspree ID to the form action.',
-        'error'
-      );
-      return;
-    }
-
     const submitBtn = contactForm.querySelector('.form-submit-btn');
     submitBtn.classList.add('is-sending');
     submitBtn.disabled = true;
+    setStatus('Sending your message…', 'info');
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: new FormData(contactForm),
         headers: { Accept: 'application/json' },
@@ -479,6 +474,7 @@ if (contactForm) {
 
       if (response.ok) {
         contactForm.reset();
+        setStatus('');
         if (formSuccessMsg) formSuccessMsg.classList.add('active');
       } else {
         // Surface Formspree's validation errors when present

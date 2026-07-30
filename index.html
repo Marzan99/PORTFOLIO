@@ -429,14 +429,13 @@
                     <h3>Send Me a Message</h3>
 
                     <!--
-                        ┌─────────────────────────────────────────────────────────────────┐
-                        │  SETUP (Formspree — free, no backend):                            │
-                        │  1. Create a form at https://formspree.io using marzanul999@gmail.com │
-                        │  2. Copy your form ID (looks like: myzabcde)                       │
-                        │  3. Replace YOUR_FORM_ID in the action URL below with it.          │
-                        └─────────────────────────────────────────────────────────────────┘
+                        Contact form powered by Formspree (free, no backend).
+                        The delivery endpoint is set in TWO places, kept in sync:
+                          • the action attribute below, and
+                          • the FORMSPREE_ENDPOINT constant in script.js (source of truth).
+                        To change it, update the ID in both.
                     -->
-                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                    <form id="contact-form" action="https://formspree.io/f/xzdnworn" method="POST" novalidate>
                         <!-- Sets the subject line of the email you receive -->
                         <input type="hidden" name="_subject" value="New message from your portfolio site">
 
